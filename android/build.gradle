@@ -44,6 +44,6 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile ('com.facebook.react:react-native:0.55.4') { force = true }
+    compile "com.facebook.react:react-native:+"
 }
   
