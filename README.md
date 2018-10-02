@@ -66,7 +66,7 @@ RNReverseGeocode.searchForLocations(
 );
 ```
 
-and you should get similar results:
+and you should get similar results (on iOS):
 
 ```javascript
 {

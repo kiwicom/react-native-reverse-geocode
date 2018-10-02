@@ -1,25 +1,27 @@
-import React from "react";
+// @flow
+
+import * as React from 'react';
 import {
   StyleSheet,
   Text,
   View,
   ScrollView,
   SafeAreaView,
-  TextInput
-} from "react-native";
-import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
+  TextInput,
+} from 'react-native';
+import RNReverseGeocode from '@kiwicom/react-native-reverse-geocode';
 
 export default class App extends React.Component {
   state = {
-    err: null,
+    error: null,
     addresses: null,
     region: {
       latitude: 50,
       longitude: 14,
       latitudeDelta: 0.01,
-      longitudeDelta: 0.01
+      longitudeDelta: 0.01,
     },
-    searchText: ""
+    searchText: '',
   };
 
   componentDidMount() {
@@ -27,11 +29,6 @@ export default class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(
-      prevState.searchText,
-      this.state.searchText,
-      prevState.searchText != this.state.searchText
-    );
     if (prevState.searchText != this.state.searchText) {
       this.searchForLocations();
     }
@@ -42,15 +39,11 @@ export default class App extends React.Component {
       this.state.searchText,
       this.state.region,
       (err, res) => {
-        console.log({
-          error: err,
-          addresses: res
-        });
         this.setState({
           error: err,
-          addresses: res
+          addresses: res,
         });
-      }
+      },
     );
   };
 
@@ -63,7 +56,7 @@ export default class App extends React.Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.textInputContainer}>
           <TextInput
-            placeholder="Try searching for 'Charles'..."
+            placeholder="Try searching for 'Charles Bridge'..."
             onChangeText={this.onChangeText}
           />
         </View>
@@ -98,25 +91,25 @@ const Field = ({ children }) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textInputContainer: {
-    width: "90%",
+    width: '90%',
     margin: 10,
     borderWidth: 1,
     padding: 10,
-    borderColor: "#aaa"
+    borderColor: '#aaa',
   },
   result: {
     borderWidth: 1,
-    padding: 10
+    padding: 10,
   },
   fieldName: {
     marginTop: 5,
-    fontWeight: "bold",
-    color: "#555",
-    fontSize: 10
-  }
+    fontWeight: 'bold',
+    color: '#555',
+    fontSize: 10,
+  },
 });
