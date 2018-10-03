@@ -628,7 +628,7 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@kiwicom/react-native-reverse-geocode@0.0.1":
+"@kiwicom/react-native-reverse-geocode@0.0.2":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@kiwicom/react-native-reverse-geocode/-/react-native-reverse-geocode-0.0.1.tgz#0b91eb24ab45e17a27f91f52b9b14a7b4732d5b0"
   integrity sha512-Hj8F95+gSbjr1Iv6kRuGGa6LCt16ufhMk3k7WiorRDQ1by9e2GeB93HdAs32UjAmQxA8eqFqqow9oS98C50zMw==

@@ -23,7 +23,7 @@
     "preset": "react-native"
   },
   "dependencies": {
-    "@kiwicom/react-native-reverse-geocode": "0.0.1",
+    "@kiwicom/react-native-reverse-geocode": "0.0.2",
     "react": "16.5.0",
     "react-native": "0.57.0"
   }

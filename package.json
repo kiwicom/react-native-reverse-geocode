@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "flow": "flow"
   },
   "keywords": [
     "react-native"
@@ -34,6 +35,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.3.0",
+    "flow-bin": "^0.82.0",
     "prettier": "^1.14.3"
   }
 }

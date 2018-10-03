@@ -11,7 +11,33 @@ import {
 } from 'react-native';
 import RNReverseGeocode from '@kiwicom/react-native-reverse-geocode';
 
-export default class App extends React.Component {
+type Location = {|
+  +latitude: number,
+  +longitude: number,
+|};
+
+type Address = {|
+  name: string,
+  address: string,
+  location: Location,
+|};
+
+type Region = {|
+  ...Location,
+  +latitudeDelta: number,
+  +longitudeDelta: number,
+|};
+
+type Props = {||};
+
+type State = {|
+  error: string | null,
+  addresses: Address[] | null,
+  region: Region,
+  searchText: string,
+|};
+
+export default class App extends React.Component<Props, State> {
   state = {
     error: null,
     addresses: null,
@@ -28,7 +54,7 @@ export default class App extends React.Component {
     this.searchForLocations();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevState.searchText != this.state.searchText) {
       this.searchForLocations();
     }
@@ -47,7 +73,7 @@ export default class App extends React.Component {
     );
   };
 
-  onChangeText = searchText => {
+  onChangeText = (searchText: string) => {
     this.setState({ searchText });
   };
 
@@ -71,7 +97,11 @@ export default class App extends React.Component {
   }
 }
 
-const Result = ({ address }) => (
+type ResultProps = {|
+  +address: Address,
+|};
+
+const Result = ({ address }: ResultProps) => (
   <View style={styles.result}>
     <Field>Name (iOS only):</Field>
     <Text>{address.name}</Text>
@@ -84,7 +114,11 @@ const Result = ({ address }) => (
   </View>
 );
 
-const Field = ({ children }) => (
+type FieldProps = {|
+  +children: React.Node,
+|};
+
+const Field = ({ children }: FieldProps) => (
   <Text style={styles.fieldName}>{children}</Text>
 );
 
