@@ -25,11 +25,11 @@ type Region = {|
 
 type Callback = (err: string, res: Result) => void;
 
-const debounce = (fn, time) => {
+const debounce = (fn, time, ...args) => {
   let timeout;
 
-  return function() {
-    const functionCall = () => fn.apply(this, arguments);
+  return function () {
+    const functionCall = () => fn.apply(this, args);
 
     clearTimeout(timeout);
     timeout = setTimeout(functionCall, time);

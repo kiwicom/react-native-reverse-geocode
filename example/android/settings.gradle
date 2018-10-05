@@ -1,4 +1,0 @@
-rootProject.name = 'RNReverseGeocodeExample'
-include ':@kiwicom_react-native-reverse-geocode'
-project(':@kiwicom_react-native-reverse-geocode').projectDir = new File(rootProject.projectDir, '../node_modules/@kiwicom/react-native-reverse-geocode/android')
-include ':app'

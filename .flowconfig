@@ -3,28 +3,37 @@
 .*/*[.]android.js
 
 ; Ignore "BUCK" generated dirs
-<PROJECT_ROOT>/example/\.buckd/
+<PROJECT_ROOT>/\.buckd/
 
 ; Ignore unexpected extra "@providesModule"
-.*/example/node_modules/.*/node_modules/fbjs/.*
+.*/node_modules/.*/node_modules/fbjs/.*
 
 ; Ignore duplicate module providers
 ; For RN Apps installed via npm, "Libraries" folder is inside
 ; "node_modules/react-native" but in the source repo it is in the root
-.*/example/.*/Libraries/react-native/React.js
+.*/Libraries/react-native/React.js
 
 ; Ignore polyfills
-.*/example/.*/Libraries/polyfills/.*
+.*/Libraries/polyfills/.*
 
 ; Ignore metro
-.*/example/.*/node_modules/metro/.*
+.*/node_modules/metro/.*
+
+; Ignore some modules we don't need to parse
+.*/node_modules/prettier/.*
+.*/node_modules/eslint.*
+
+[untyped]
+.*/node_modules/expo/.*
+.*/node_modules/xdl/.*
+.*/node_modules/react-native-gesture-handler/.*
 
 [include]
 
 [libs]
-example/node_modules/react-native/Libraries/react-native/react-native-interface.js
-example/node_modules/react-native/flow/
-example/node_modules/react-native/flow-github/
+node_modules/react-native/Libraries/react-native/react-native-interface.js
+node_modules/react-native/flow-github
+node_modules/react-native/flow
 
 [options]
 emoji=true
@@ -44,8 +53,8 @@ module.system.haste.name_reducers='^\(.*\)\.android$' -> '\1'
 module.system.haste.name_reducers='^\(.*\)\.native$' -> '\1'
 module.system.haste.paths.blacklist=.*/__tests__/.*
 module.system.haste.paths.blacklist=.*/__mocks__/.*
-module.system.haste.paths.blacklist=<PROJECT_ROOT>/example/node_modules/react-native/Libraries/Animated/src/polyfills/.*
-module.system.haste.paths.whitelist=<PROJECT_ROOT>/example/node_modules/react-native/Libraries/.*
+module.system.haste.paths.blacklist=<PROJECT_ROOT>/node_modules/react-native/Libraries/Animated/src/polyfills/.*
+module.system.haste.paths.whitelist=<PROJECT_ROOT>/node_modules/react-native/Libraries/.*
 
 munge_underscores=true
 
@@ -54,8 +63,6 @@ module.name_mapper='^[./a-zA-Z0-9$_-]+\.\(bmp\|gif\|jpg\|jpeg\|png\|psd\|svg\|we
 module.file_ext=.js
 module.file_ext=.jsx
 module.file_ext=.json
-module.file_ext=.ios.js
-;module.file_ext=.android.js
 module.file_ext=.native.js
 
 suppress_type=$FlowIssue
@@ -67,3 +74,6 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(<VERSION>\\)? *\\(si
 suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(<VERSION>\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
+
+[version]
+^0.82.0
