@@ -107,7 +107,7 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
 
       var remoteAddressesMaxResults = MAX_RESULTS;
       if (localAddresses != null) {
-        val remoteAddressesMaxResults = MAX_RESULTS - localAddresses.size
+        remoteAddressesMaxResults = MAX_RESULTS - localAddresses.size
       } 
 
       // Then add other more remote possibilities
