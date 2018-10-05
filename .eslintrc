@@ -1,9 +1,7 @@
 {
-  "extends": [
-  "airbnb-base",  
-  "plugin:flowtype/recommended"
-  ],
-  "plugins": [
-    "flowtype"
-  ]
+  "extends": "@callstack",
+  "rules": {
+    "global-require": 0,
+    "prefer-destructuring": 0
+  }
 }

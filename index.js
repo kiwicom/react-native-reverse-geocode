@@ -40,11 +40,11 @@ const searchForLocations = (
   searchText: string,
   region: Region,
   callback: Callback,
-  debounceMs: number = 200,
+  debounceMs: number = 200
 ) => {
   debounce(
     RNReverseGeocode.searchForLocations(searchText, region, callback),
-    debounceMs,
+    debounceMs
   );
 };
 
