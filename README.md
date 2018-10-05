@@ -1,6 +1,6 @@
 # @kiwicom/react-native-reverse-geocode
 
-Thin wrapper over MapKit's [`MKLocalSearch`](https://developer.apple.com/documentation/mapkit/mklocals) and Geocoder's [`getFromLocationName`](<https://developer.android.com/reference/android/location/Geocoder.html#getFromLocationName(java.lang.String,%20int,%20double,%20double,%20double,%20double)>).
+Thin wrapper over MapKit's [`MKLocalSearch`](https://developer.apple.com/documentation/mapkit/mklocalsearch) and Geocoder's [`getFromLocationName`](<https://developer.android.com/reference/android/location/Geocoder.html#getFromLocationName(java.lang.String,%20int,%20double,%20double,%20double,%20double)>).
 
 ## Disclaimer
 
