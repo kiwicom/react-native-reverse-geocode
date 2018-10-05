@@ -28,7 +28,7 @@ type Callback = (err: string, res: Result) => void;
 const debounce = (fn, time, ...args) => {
   let timeout;
 
-  return function () {
+  return () => {
     const functionCall = () => fn.apply(this, args);
 
     clearTimeout(timeout);

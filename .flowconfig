@@ -19,21 +19,12 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
-; Ignore some modules we don't need to parse
-.*/node_modules/prettier/.*
-.*/node_modules/eslint.*
-
-[untyped]
-.*/node_modules/expo/.*
-.*/node_modules/xdl/.*
-.*/node_modules/react-native-gesture-handler/.*
-
 [include]
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
-node_modules/react-native/flow-github
-node_modules/react-native/flow
+node_modules/react-native/flow/
+node_modules/react-native/flow-github/
 
 [options]
 emoji=true
@@ -76,4 +67,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 [version]
-^0.82.0
+^0.78.0
