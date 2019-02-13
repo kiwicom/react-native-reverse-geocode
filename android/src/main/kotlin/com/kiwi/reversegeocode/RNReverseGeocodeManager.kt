@@ -121,7 +121,7 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
       callback.invoke(null,formatAddresses(addresses))
     
     } catch (e: Exception) {
-      callback.invoke("error", null)
+      callback.invoke(e.message, null)
     }
   }
   }
