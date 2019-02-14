@@ -19,6 +19,8 @@ const searchForLocations = (
   );
 };
 
+// This method is not available on iOS.
+// We can imply that Geocoding implementation will be always available.
 const isPresent = (
   callback: Callback,
   debounceMs: number = 200

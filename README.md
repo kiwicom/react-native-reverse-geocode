@@ -40,7 +40,9 @@ _This is still a work in progress and is suited to one specific usecase._
      compile project(':@kiwicom/react-native-reverse-geocode')
    ```
 
-## Usage
+## Methods usage
+
+#### searchForLocations()
 
 ```javascript
 import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
@@ -125,6 +127,21 @@ and you should get similar results (on iOS):
   ]
 }
 ```
+
+#### isPresent()
+##### Android
+
+Returns `true` if the Geocoder methods getFromLocation and getFromLocationName are implemented. Lack of network connectivity may still cause these methods to return null or empty lists.
+
+```javascript
+import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
+
+RNReverseGeocode.isPresent();
+```
+
+##### iOS
+
+Usage is the same but you will always get `true` since this method is only available in Android and we can imply that geocoding implementation will always be available in iOS.
 
 ## License
 
