@@ -66,6 +66,11 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
   }
 
   @ReactMethod
+  fun isPresent(callback: Callback) {
+    callback.invoke(Geocoder.isPresent())
+  }
+
+  @ReactMethod
   fun searchForLocations(
     searchText: String,
     region: ReadableMap,

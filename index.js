@@ -1,51 +1,11 @@
-// @flow
+'use strict';
 
-import { NativeModules } from 'react-native';
+import { Platform } from "react-native";
+import iOSGeocoder from "./index.ios.js";
+import AndroidGeocoder from "./index.android.js";
 
-const { RNReverseGeocode } = NativeModules;
+const Geocoder = Platform.OS === "ios"
+  ? iOSGeocoder
+  : AndroidGeocoder;
 
-type Location = {|
-  +latitude: number,
-  +longitude: number,
-|};
-
-type Address = {|
-  name: string,
-  address: string,
-  location: Location,
-|};
-
-type Result = $ReadOnlyArray<Address>;
-
-type Region = {|
-  ...Location,
-  +latitudeDelta: number,
-  +longitudeDelta: number,
-|};
-
-type Callback = (err: string, res: Result) => void;
-
-const debounce = (fn, time, ...args) => {
-  let timeout;
-
-  return () => {
-    const functionCall = () => fn.apply(this, args);
-
-    clearTimeout(timeout);
-    timeout = setTimeout(functionCall, time);
-  };
-};
-
-const searchForLocations = (
-  searchText: string,
-  region: Region,
-  callback: Callback,
-  debounceMs: number = 200
-) => {
-  debounce(
-    RNReverseGeocode.searchForLocations(searchText, region, callback),
-    debounceMs
-  );
-};
-
-export default { searchForLocations };
+export default Geocoder;
