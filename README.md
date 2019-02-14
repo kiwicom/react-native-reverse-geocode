@@ -136,7 +136,10 @@ Returns `true` if the Geocoder methods getFromLocation and getFromLocationName a
 ```javascript
 import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
 
-RNReverseGeocode.isPresent();
+RNReverseGeocode.isPresent(
+  (res) => {
+   console.log(res); // returns true if available
+ });
 ```
 
 ##### iOS
