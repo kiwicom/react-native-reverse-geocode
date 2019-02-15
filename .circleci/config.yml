@@ -1,0 +1,57 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+defaults: &defaults
+  working_directory: ~/react-native-reverse-geocode
+  docker:
+    - image: circleci/node:11
+
+version: 2
+jobs:
+  install-dependencies:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/react-native-reverse-geocode
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: .
+          paths: .
+  flow:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-reverse-geocode
+      - run: yarn flow
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native-reverse-geocode
+      - run: yarn lint
+  
+
+ 
+workflows:
+  version: 2
+  test-and-release:
+    jobs:
+      - install-dependencies
+      - lint:
+          requires:
+            - install-dependencies
+      - flow:
+          requires:
+            - install-dependencies

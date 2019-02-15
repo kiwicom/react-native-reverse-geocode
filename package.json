@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
+    "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow"
   },
   "keywords": [
@@ -22,8 +22,9 @@
     "url": "https://github.com/kiwicom/react-native-reverse-geocode"
   },
   "devDependencies": {
-    "@callstack/eslint-config": "^2.0.0",
-    "eslint": "^5.6.1",
+    "@kiwicom/eslint-config": "^2.11.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0",
     "flow-bin": "0.78.0",
     "react": "^16.5.2",
     "react-native": "^0.57.2"
