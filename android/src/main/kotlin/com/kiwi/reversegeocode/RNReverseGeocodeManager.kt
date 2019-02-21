@@ -67,7 +67,7 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
 
   @ReactMethod
   fun isPresent(callback: Callback) {
-    callback.invoke(Geocoder.isPresent())
+    callback.invoke(null, Geocoder.isPresent())
   }
 
   @ReactMethod
