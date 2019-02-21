@@ -26,7 +26,7 @@ const isPresent = (
   debounceMs: number = 200
 ) => {
   debounce(
-    () => callback(true),
+    callback(null, true),
     debounceMs
   );
 };
