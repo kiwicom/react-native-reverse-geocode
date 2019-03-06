@@ -48,7 +48,7 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
   private fun formatAddress(address: Address): WritableMap {
     val addressObject = WritableNativeMap()
     
-    addressObject.putNull("name")
+    addressObject.putString("name", address.getFeatureName())
     addressObject.putMap("location", getLocationFromAddress(address))
     addressObject.putString("address", getFirstLineOfAddress(address))
     
@@ -124,4 +124,4 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
       callback.invoke(e.message, null)
     }
   }
-  }
+}
