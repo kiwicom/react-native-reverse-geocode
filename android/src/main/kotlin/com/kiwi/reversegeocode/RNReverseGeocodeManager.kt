@@ -116,7 +116,7 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
         if (remoteAddresses != null) {
 
           // Filter out local-search duplicates
-          remoteAddresses = remoteAddresses.filter { ra -> localAddresses.find { la -> la.getLatitude() == ra.getLatitude() && la.getLongitude() == ra.getLongitude() } == null };
+          remoteAddresses = remoteAddresses.filter { remoteAddress -> localAddresses.find { localAddress -> localAddress.getLatitude() == remoteAddress.getLatitude() && localAddress.getLongitude() == remoteAddress.getLongitude() } == null };
 
           // Limit the remove search results to not exceed MAX_RESULTS
           if ((remoteAddresses.size + localAddresses.size) > MAX_RESULTS) {
