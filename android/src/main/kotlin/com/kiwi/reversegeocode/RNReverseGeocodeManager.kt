@@ -104,19 +104,29 @@ class RNReverseGeocodeManager (reactContext: ReactApplicationContext) : ReactCon
         upperRightLatitude,
         upperRightLongitude
       )
+      var addresses = localAddresses.orEmpty()
 
-      var remoteAddressesMaxResults = MAX_RESULTS;
-      if (localAddresses != null) {
-        remoteAddressesMaxResults = MAX_RESULTS - localAddresses.size
-      } 
+      // If less than the max-amount of items have been found,
+      // then add other more remote possibilities
+      if ((localAddresses != null) && (localAddresses.size < MAX_RESULTS)) {
+        var remoteAddresses = geocoder.getFromLocationName(
+          searchText,
+          MAX_RESULTS
+        )
+        if (remoteAddresses != null) {
 
-      // Then add other more remote possibilities
-      val remoteAddresses = geocoder.getFromLocationName(
-        searchText,
-        remoteAddressesMaxResults
-      )
+          // Filter out local-search duplicates
+          remoteAddresses = remoteAddresses.filter { remoteAddress -> localAddresses.find { localAddress -> localAddress.getLatitude() == remoteAddress.getLatitude() && localAddress.getLongitude() == remoteAddress.getLongitude() } == null };
 
-      val addresses = remoteAddresses.orEmpty() + localAddresses.orEmpty()
+          // Limit the remove search results to not exceed MAX_RESULTS
+          if ((remoteAddresses.size + localAddresses.size) > MAX_RESULTS) {
+            remoteAddresses = remoteAddresses.subList(0, MAX_RESULTS - localAddresses.size);
+          }
+
+          // Concatenate addresses
+          addresses = localAddresses + remoteAddresses
+        }
+      }
 
       callback.invoke(null,formatAddresses(addresses))
     
