@@ -1,6 +1,6 @@
 {
   "name": "@kiwicom/react-native-reverse-geocode",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A React Native wrapper for MapKit's MKLocalSearch and Geocoder's getFromLocatioName",
   "main": "index.js",
   "scripts": {
