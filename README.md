@@ -6,6 +6,9 @@ Thin wrapper over MapKit's [`MKLocalSearch`](https://developer.apple.com/documen
 
 _This is still a work in progress and is suited to one specific usecase._
 
+This project is no longer being actively maintained by Kiwi.com. Feel free to provide us with PR's if you have
+any issues, and we will see to having the PR's merged.
+
 ## Getting started
 
 `$ npm install @kiwicom/react-native-reverse-geocode --save`
